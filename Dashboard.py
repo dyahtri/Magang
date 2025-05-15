@@ -20,7 +20,7 @@ def page_profil_perusahaan():
 
     col1, col2 = st.columns([1.2, 5])
     with col1:
-        st.image("D:\Puding\Magang\LogoIC.png")
+        st.image("LogoIC.png")
     with col2:
         st.markdown("<h1 style='margin-top: 5px;'>Profil Perusahaan - PLN ICON+</h1>", unsafe_allow_html=True)
 
