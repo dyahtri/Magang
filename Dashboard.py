@@ -157,13 +157,13 @@ elif page == "🔢 ABC Analysis":
         st.markdown("---")
         st.subheader("📋 ABC Analysis Summary")
         abc_summary = df_abc.groupby("Kategori").agg(
-            #Jumlah_Item=("Material", lambda x: x.astype(str).nunique()),
+          
             Total_Quantity=("Quantity", "sum"),
             Total_Amount=("Value", "sum"),
             Total_Nilai_Rupiah=("Value", "sum")
         ).reset_index()
 
-        #abc_summary["Persentase_Jumlah_Item"] = 100 * abc_summary["Jumlah_Item"] / df_abc.shape[0]
+      
         abc_summary["Persentase_Penyerapan"] = 100 * abc_summary["Total_Nilai_Rupiah"] / df_abc["Value"].sum()
         abc_summary["Persentase_Kuantitas"] = 100 * abc_summary["Total_Quantity"] / df_abc["Quantity"].sum()
 
@@ -171,7 +171,7 @@ elif page == "🔢 ABC Analysis":
             "Kategori": "Kelompok",
     
             "Total_Quantity": "Total Quantity",
-            "Total_Amount": "Total Amount in LC",
+           
             "Total_Nilai_Rupiah": "Jumlah Nilai Rupiah",
             "Persentase_Kuantitas": "Persentase Jumlah Kuantitas",
             "Persentase_Penyerapan": "Persentase Penyerapan Nilai Rupiah"
