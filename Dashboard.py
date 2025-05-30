@@ -165,20 +165,21 @@ elif page == "🔢 ABC Analysis":
 
         abc_summary["Persentase_Jumlah_Item"] = 100 * abc_summary["Jumlah_Item"] / df_abc.shape[0]
         abc_summary["Persentase_Penyerapan"] = 100 * abc_summary["Total_Nilai_Rupiah"] / df_abc["Value"].sum()
+      abc_summary["Persentase_Kuantitas"] = 100 * abc_summary["Total_Quantity"] / total_quantity
 
         abc_summary_display = abc_summary.rename(columns={
             "Kategori": "Kelompok",
-            "Jumlah_Item": "Jumlah Item",
+    
             "Total_Quantity": "Total Quantity",
             "Total_Amount": "Total Amount in LC",
             "Total_Nilai_Rupiah": "Jumlah Nilai Rupiah",
-             "Persentase_Jumlah_Item": "Persentase Jumlah Item",
+             "Persentase_Kuantitas": "Persentase Jumlah Kuantitas",
             "Persentase_Penyerapan": "Persentase Penyerapan Nilai Rupiah"
         })
 
         abc_summary_display["Jumlah Nilai Rupiah"] = abc_summary_display["Jumlah Nilai Rupiah"].apply(lambda x: f"Rp {x:,.0f}".replace(",", "."))
         abc_summary_display["Total Amount in LC"] = abc_summary_display["Total Amount in LC"].apply(lambda x: f"Rp {x:,.0f}".replace(",", "."))
-        abc_summary_display["Persentase Jumlah Item"] = abc_summary_display["Persentase Jumlah Item"].map("{:.2f}%".format)
+        abc_summary["Persentase_Kuantitas"] = abc_summary["Persentase_Kuantitas"].map("{:.2f}%".format)
         abc_summary_display["Persentase Penyerapan Nilai Rupiah"] = abc_summary_display["Persentase Penyerapan Nilai Rupiah"].map("{:.2f}%".format)
 
         st.table(abc_summary_display)
