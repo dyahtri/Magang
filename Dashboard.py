@@ -136,7 +136,8 @@ elif page == "🔢 ABC Analysis":
         st.markdown("---")
         st.markdown("### ABC Category Distribution")
         df_abc_plot = df_abc.groupby("Kategori")["Value"].sum().reset_index()
-        fig3 = px.bar(df_abc_plot, x="Kategori", y="Quantity", color="Kategori",
+        df_abc_plot1 = df_abc.groupby("Kategori")["Quantity"].sum().reset_index()
+        fig3 = px.bar(df_abc_plot1, x="Kategori", y="Quantity", color="Kategori",
                       color_discrete_sequence=px.colors.qualitative.Pastel)
         st.plotly_chart(fig3)
 
