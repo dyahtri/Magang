@@ -179,7 +179,7 @@ elif page == "🔢 ABC Analysis":
 
         abc_summary_display["Jumlah Nilai Rupiah"] = abc_summary_display["Jumlah Nilai Rupiah"].apply(lambda x: f"Rp {x:,.0f}".replace(",", "."))
         
-        abc_summary["Persentase Jumlah Kuantitas"] = abc_summary_display["Persentase Jumlah Kuantitas"].map("{:.2f}%".format)
+        abc_summary_display["Persentase Jumlah Kuantitas"] = abc_summary_display["Persentase Jumlah Kuantitas"].map("{:.2f}%".format)
         abc_summary_display["Persentase Penyerapan Nilai Rupiah"] = abc_summary_display["Persentase Penyerapan Nilai Rupiah"].map("{:.2f}%".format)
 
         st.table(abc_summary_display)
