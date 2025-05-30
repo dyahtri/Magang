@@ -96,6 +96,7 @@ elif page == "📊 Inventory Data Monitoring":
         st.subheader("📋 Most Moved Items")
         moved_items = df.groupby("Material Description")["Quantity"].sum().abs().sort_values(ascending=False).head(10)
         moved_df = moved_items.reset_index().rename(columns={"Material Description": "Material", "Quantity": "Quantity"})
+        moved_df["Quantity"] = moved_df["Quantity"].astype(int)
         st.table(moved_df)
     else:
         st.warning("Silakan unggah data terlebih dahulu di halaman 'Upload Data'.")
