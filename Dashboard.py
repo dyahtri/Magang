@@ -165,7 +165,7 @@ elif page == "🔢 ABC Analysis":
 
         abc_summary["Persentase_Jumlah_Item"] = 100 * abc_summary["Jumlah_Item"] / df_abc.shape[0]
         abc_summary["Persentase_Penyerapan"] = 100 * abc_summary["Total_Nilai_Rupiah"] / df_abc["Value"].sum()
-      abc_summary["Persentase_Kuantitas"] = 100 * abc_summary["Total_Quantity"] / total_quantity
+        abc_summary["Persentase_Kuantitas"] = 100 * abc_summary["Total_Quantity"] / total_quantity
 
         abc_summary_display = abc_summary.rename(columns={
             "Kategori": "Kelompok",
