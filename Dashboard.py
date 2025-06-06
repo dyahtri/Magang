@@ -35,7 +35,6 @@ def page_profil_perusahaan():
     - Memastikan penggunaan sumber daya secara optimal untuk meningkatkan keunggulan kompetitif dengan berorientasi kepada aspirasi pemangku kepentingan
     - Membangun talenta yang berkualitas dan membina budaya kerja berkelanjutan
 
-    📍 Kantor Pusat: Jakarta, Indonesia
     📍 SBU Regional Jawa Bagian Timur: Surabaya, Indonesia
     🌐 Website: [https://iconpln.co.id](https://iconpln.co.id)
     """)
