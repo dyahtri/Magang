@@ -29,13 +29,13 @@ def page_profil_perusahaan():
 
     Visi: *Menjadi pemimpin penyedia smart connectivity solutions, digital dan green energy yang terintegrasi untuk mendukung transisi energi di Indonesia.*
 
-    Misi:
-    - Mengembangkan smart solution connectivity, digital dan green yang inovatif dan berbasis prinsip-prinsip ESG
-    - Memenangkan hati pelanggan dengan produk dan layanan berkualitas guna memberikan pengalaman terbaik
-    - Memastikan penggunaan sumber daya secara optimal untuk meningkatkan keunggulan kompetitif dengan berorientasi kepada aspirasi pemangku kepentingan
-    - Membangun talenta yang berkualitas dan membina budaya kerja berkelanjutan
-
-    📍 Kantor Pusat: Jakarta, Indonesia 
+    **Misi:**
+    - Mengembangkan smart solution connectivity, digital dan green yang inovatif dan berbasis prinsip-prinsip ESG  
+    - Memenangkan hati pelanggan dengan produk dan layanan berkualitas guna memberikan pengalaman terbaik  
+    - Memastikan penggunaan sumber daya secara optimal untuk meningkatkan keunggulan kompetitif dengan berorientasi kepada aspirasi pemangku kepentingan  
+    - Membangun talenta yang berkualitas dan membina budaya kerja berkelanjutan  
+    
+    📍 Kantor Pusat: Jakarta, Indonesia  
     🌐 Website: [https://iconpln.co.id](https://iconpln.co.id)
     """)
 
