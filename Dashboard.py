@@ -35,8 +35,8 @@ def page_profil_perusahaan():
     - Memastikan penggunaan sumber daya secara optimal untuk meningkatkan keunggulan kompetitif dengan berorientasi kepada aspirasi pemangku kepentingan
     - Membangun talenta yang berkualitas dan membina budaya kerja berkelanjutan
 
-    📍 Kantor Pusat: Jamsostek Tower B Jl. Gatot Subroto, RT.6/RW.1, Kuningan Bar., Kec. Mampang Prpt., Kota Jakarta Selatan 12710
-    📍 SBU Regional Jawa Bagian Timur: PLN PIKITRING Jl. Ketintang Baru I(satu) No. 1-3 Surabaya
+    📍 Kantor Pusat: Jakarta, Indonesia
+    📍 SBU Regional Jawa Bagian Timur: Surabaya, Indonesia
     🌐 Website: [https://iconpln.co.id](https://iconpln.co.id)
     """)
 
