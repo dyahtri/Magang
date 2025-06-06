@@ -27,12 +27,13 @@ def page_profil_perusahaan():
     st.markdown("""
     **PLN ICON+** (PT Indonesia Comnets Plus) adalah anak perusahaan dari PT PLN (Persero) yang bergerak di bidang layanan jaringan dan teknologi informasi.
 
-    Visi: *Menjadi penyedia solusi teknologi informasi dan komunikasi terdepan di Indonesia.*
+    Visi: *Menjadi pemimpin penyedia smart connectivity solutions, digital dan green energy yang terintegrasi untuk mendukung transisi energi di Indonesia.*
 
     Misi:
-    - Memberikan layanan infrastruktur jaringan terbaik
-    - Mendukung transformasi digital PLN dan masyarakat luas
-    - Mendorong inovasi berkelanjutan di bidang TIK
+    - Mengembangkan smart solution connectivity, digital dan green yang inovatif dan berbasis prinsip-prinsip ESG
+    - Memenangkan hati pelanggan dengan produk dan layanan berkualitas guna memberikan pengalaman terbaik
+    - Memastikan penggunaan sumber daya secara optimal untuk meningkatkan keunggulan kompetitif dengan berorientasi kepada aspirasi pemangku kepentingan
+    - Membangun talenta yang berkualitas dan membina budaya kerja berkelanjutan
 
     📍 Kantor Pusat: Jakarta, Indonesia  
     🌐 Website: [https://iconpln.co.id](https://iconpln.co.id)
