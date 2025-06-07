@@ -124,9 +124,9 @@ elif page == "🔢 ABC Analysis":
         df_abc["Cumulative Percentage"] = 100 * df_abc["Cumulative Sum"] / df_abc["Value"].sum()
 
         def klasifikasi(row):
-            if row["Cumulative Percentage"] <= 80:
+            if row["Cumulative Percentage"] <= 70:
                 return "A"
-            elif row["Cumulative Percentage"] <= 95:
+            elif row["Cumulative Percentage"] <= 90:
                 return "B"
             else:
                 return "C"
