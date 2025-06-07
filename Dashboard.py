@@ -95,10 +95,19 @@ elif page == "📊 Inventory Data Monitoring":
             st.plotly_chart(fig3)
 
         st.subheader("📋 Most Moved Items")
+
+        # Group by 'Material', summing 'Quantity'
         moved_items = df.groupby("Material")["Quantity"].sum().abs().sort_values(ascending=False).head(10)
-        moved_df = moved_items.reset_index().rename(columns={"Material Description": "Material", "Quantity": "Quantity"})
+        # Ambil top 10 Material, lalu ambil deskripsinya dari df asli
+        top_materials = moved_items.index.tolist()
+        material_desc = df[df["Material"].isin(top_materials)][["Material", "Material Description"]].drop_duplicates()
+        # Gabungkan deskripsi ke dataframe hasil groupby
+        moved_df = moved_items.reset_index().merge(material_desc, on="Material", how="left")
+        # Susun ulang kolom dan ganti nama kolom
+        moved_df = moved_df[["Material Description", "Quantity"]].rename(columns={"Material Description": "Material"})
         moved_df["Quantity"] = moved_df["Quantity"].astype(int)
         st.table(moved_df)
+
     else:
         st.warning("Silakan unggah data terlebih dahulu di halaman 'Upload Data'.")
         
