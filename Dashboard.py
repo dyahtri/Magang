@@ -149,6 +149,7 @@ elif page == "🔢 ABC Analysis":
         # Atur ukuran font label persentase
         fig4.update_traces(
             textinfo='percent',  # hanya tampilkan persentase
+            texttemplate='%{percent:.1%}',
             textfont_size=18,    # ukuran font label di luar pie
             insidetextfont=dict(size=18),  # jika text di dalam pie
         )
