@@ -78,7 +78,7 @@ elif page == "📊 Inventory Data Monitoring":
                         color_discrete_sequence=["#42a5f5"])
             st.plotly_chart(fig1)
 
-        st.subheader("📌 Distribution by Material (Based on Quantity)")
+        st.subheader("📌 Distribution by Material")
         # Group by 'Material', summing 'Quantity' seperti di Most Moved Items
         moved_items = df.groupby("Material")["Quantity"].sum().abs().sort_values(ascending=False).head(10)
         # Ambil top 10 Material, lalu ambil Material Description-nya
