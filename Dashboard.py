@@ -80,7 +80,7 @@ elif page == "📊 Inventory Data Monitoring":
 
         st.subheader("💰 Distribution by Material Value (Billion IDR)")
         if 'Amount in LC' in df.columns and 'Material Description' in df.columns:
-              top_materials_value = df.groupby("Material Description")["Amount in LC"].sum().sort_values(ascending=False)
+              top_materials_value = df.groupby("Material Description")["Amount in LC"].sum().sort_values(ascending=False).head(10)
               top_materials_value_df = top_materials_value.reset_index()
               top_materials_value_df.columns = ['Material Description', 'Total Amount in LC']
               top_materials_value_df["Total Amount in LC"] = top_materials_value_df["Total Amount in LC"] / 1e9  # Konversi jadi Billion
