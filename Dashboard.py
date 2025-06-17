@@ -78,34 +78,23 @@ elif page == "📊 Inventory Data Monitoring":
                         color_discrete_sequence=["#42a5f5"])
             st.plotly_chart(fig1)
 
-        st.subheader("💰 Distribution by Material Value")
-           if 'Amount in LC' in df.columns and 'Material Description' in df.columns:
-              top_materials_value = df.groupby("Material Description")["Amount in LC"].sum().sort_values(ascending=False).head(10)
-              top_materials_value_df = top_materials_value.reset_index()
-              top_materials_value_df.columns = ['Material Description', 'Total Amount in LC']
-              # Konversi ke Billion
-              top_materials_value_df["Total Amount in LC (Billion)"] = top_materials_value_df["Total Amount in LC"] / 1e9
-              fig = px.bar(top_materials_value_df,
-                           x="Material Description",
-                           y="Total Amount in LC (Billion)",
-                           color="Material Description",
-                           title="Top 10 Material Based on Value (in Billion Rupiah)",
-                           color_discrete_sequence=px.colors.sequential.Plasma) 
-              # Update format axis
-              fig.update_layout(
-                  yaxis=dict(
-                      title="Total Amount (Billion Rupiah)",
-                      tickformat=".2f"  # 2 angka desimal
-                  )
-              )
-              # Update tooltip
-              fig.update_traces(
-                  hovertemplate='<b>Material: %{x}</b><br>Total Amount: %{y:.2f} B<extra></extra>'
-              )
-              st.plotly_chart(fig)
-          else:
+      st.subheader("💰 Distribution by Material Value")
+        if 'Amount in LC' in df.columns and 'Material Description' in df.columns:
+            top_materials_value = df.groupby("Material Description")["Amount in LC"].sum().sort_values(ascending=False).head(10)
+            top_materials_value_df = top_materials_value.reset_index()
+            top_materials_value_df.columns = ['Material Description', 'Total Amount in LC']
+            top_materials_value_df["Total Amount in LC"] = top_materials_value_df["Total Amount in LC"] / 1e9  # Konversi jadi Billion
+            fig = px.bar(top_materials_value_df,
+                         x="Material Description",
+                         y="Total Amount in LC",
+                         color="Material Description",
+                         title="Top 10 Material Based on Value (Billion IDR)",
+                         color_discrete_sequence=px.colors.sequential.Plasma)
+            fig.update_layout(yaxis_tickformat=".2f")  # 2 angka di belakang koma
+            st.plotly_chart(fig)
+        else:
             st.warning("Kolom 'Amount in LC' atau 'Material Description' tidak ditemukan dalam data.")
-
+          
       st.subheader("📈 Stock Changes by Date")
         if "Posting Date" in df.columns:
             df["Posting Date"] = pd.to_datetime(df["Posting Date"])
