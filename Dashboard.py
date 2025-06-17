@@ -96,7 +96,7 @@ elif page == "📊 Inventory Data Monitoring":
               st.warning("Kolom 'Amount in LC' atau 'Material Description' tidak ditemukan dalam data.")
             
         st.subheader("📈 Stock Changes by Date")
-          if "Posting Date" in df.columns:
+        if "Posting Date" in df.columns:
               df["Posting Date"] = pd.to_datetime(df["Posting Date"])
               daily_stock = df.groupby("Posting Date")["Quantity"].sum()
               daily_stock_df = daily_stock.reset_index()
