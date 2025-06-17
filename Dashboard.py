@@ -79,17 +79,22 @@ elif page == "📊 Inventory Data Monitoring":
             st.plotly_chart(fig1)
 
         st.subheader("📌 Distribution by Material (Based on Quantity)")
-        # Group by Material Description dan jumlahkan Quantity
-        top_materials = df.groupby("Material Description")["Quantity"].sum().sort_values(ascending=False).head(10)      
-        # Ubah ke DataFrame
-        top_materials_df = top_materials.reset_index()
-        top_materials_df.columns = ['Material Description', 'Total Quantity']
-        # Plot
+        # Group by 'Material', summing 'Quantity' seperti di Most Moved Items
+        moved_items = df.groupby("Material")["Quantity"].sum().abs().sort_values(ascending=False).head(10)
+        # Ambil top 10 Material, lalu ambil Material Description-nya
+        top_materials = moved_items.index.tolist()
+        material_desc = df[df["Material"].isin(top_materials)][["Material", "Material Description"]].drop_duplicates()
+        # Gabungkan deskripsi ke dataframe hasil groupby
+        moved_df = moved_items.reset_index().merge(material_desc, on="Material", how="left")      
+        # Susun ulang kolom dan ganti nama kolom
+        moved_df = moved_df[["Material Description", "Quantity"]].rename(columns={"Material Description": "Material"})
+        moved_df["Quantity"] = moved_df["Quantity"].astype(int)     
+        # Plot pakai Plotly
         fig2 = px.bar(
-            top_materials_df,
-            x="Material Description",
-            y="Total Quantity",
-            color="Material Description",
+            moved_df,
+            x="Material",
+            y="Quantity",
+            color="Material",
             color_discrete_sequence=["#ffa726"]
         )
         st.plotly_chart(fig2)
@@ -103,7 +108,6 @@ elif page == "📊 Inventory Data Monitoring":
             st.plotly_chart(fig3)
 
         st.subheader("📋 Most Moved Items")
-
         # Group by 'Material', summing 'Quantity'
         moved_items = df.groupby("Material")["Quantity"].sum().abs().sort_values(ascending=False).head(10)
         # Ambil top 10 Material, lalu ambil deskripsinya dari df asli
