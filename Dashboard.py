@@ -78,26 +78,21 @@ elif page == "📊 Inventory Data Monitoring":
                         color_discrete_sequence=["#42a5f5"])
             st.plotly_chart(fig1)
 
-        st.subheader("📌 Distribution by Material")
-        # Group by 'Material', summing 'Quantity' seperti di Most Moved Items
-        moved_items = df.groupby("Material")["Quantity"].sum().abs().sort_values(ascending=False).head(10)
-        # Ambil top 10 Material, lalu ambil Material Description-nya
-        top_materials = moved_items.index.tolist()
-        material_desc = df[df["Material"].isin(top_materials)][["Material", "Material Description"]].drop_duplicates()
-        # Gabungkan deskripsi ke dataframe hasil groupby
-        moved_df = moved_items.reset_index().merge(material_desc, on="Material", how="left")      
-        # Susun ulang kolom dan ganti nama kolom
-        moved_df = moved_df[["Material Description", "Quantity"]].rename(columns={"Material Description": "Material"})
-        moved_df["Quantity"] = moved_df["Quantity"].astype(int)     
-        # Plot pakai Plotly
-        fig2 = px.bar(
-            moved_df,
-            x="Material",
-            y="Quantity",
-            color="Material",
-            color_discrete_sequence=["#ffa726"]
-        )
-        st.plotly_chart(fig2)
+        st.subheader("💰 Distribution by Material Value")
+        if 'Amount in LC' in df.columns and 'Material Description' in df.columns:
+            top_materials_value = df.groupby("Material Description")["Amount in LC"].sum().sort_values(ascending=False).head(10)
+            top_materials_value_df = top_materials_value.reset_index()
+            top_materials_value_df.columns = ['Material Description', 'Total Amount in LC']       
+            fig = px.bar(top_materials_value_df,
+                         x="Material Description",
+                         y="Total Amount in LC",
+                         color="Material Description",
+                         title="Top 10 Material Based on Value (Amount in LC)",
+                         color_discrete_sequence=px.colors.sequential.Plasma)   
+            st.plotly_chart(fig)
+        else:
+            st.warning("Kolom 'Amount in LC' atau 'Material Description' tidak ditemukan dalam data.")
+
 
         st.subheader("📈 Stock Changes by Date")
         if "Posting Date" in df.columns:
