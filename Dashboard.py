@@ -78,12 +78,20 @@ elif page == "📊 Inventory Data Monitoring":
                         color_discrete_sequence=["#42a5f5"])
             st.plotly_chart(fig1)
 
-        st.subheader("📌 Distribution by Material")
-        top_materials = df["Material Description"].value_counts().head(10)
+        st.subheader("📌 Distribution by Material (Based on Quantity)")
+        # Group by Material Description dan jumlahkan Quantity
+        top_materials = df.groupby("Material Description")["Quantity"].sum().sort_values(ascending=False).head(10)      
+        # Ubah ke DataFrame
         top_materials_df = top_materials.reset_index()
-        top_materials_df.columns = ['Material Description', 'Frequency']
-        fig2 = px.bar(top_materials_df, x="Material Description", y="Frequency", color="Material Description",
-                          color_discrete_sequence=["#ffa726"])
+        top_materials_df.columns = ['Material Description', 'Total Quantity']
+        # Plot
+        fig2 = px.bar(
+            top_materials_df,
+            x="Material Description",
+            y="Total Quantity",
+            color="Material Description",
+            color_discrete_sequence=["#ffa726"]
+        )
         st.plotly_chart(fig2)
 
         st.subheader("📈 Stock Changes by Date")
