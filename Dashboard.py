@@ -78,9 +78,9 @@ elif page == "📊 Inventory Data Monitoring":
                         color_discrete_sequence=["#42a5f5"])
             st.plotly_chart(fig1)
 
-        st.subheader("💰 Distribution by Material Value")
+        st.subheader("💰 Distribution by Material Value (Billion IDR)")
         if 'Amount in LC' in df.columns and 'Material Description' in df.columns:
-              top_materials_value = df.groupby("Material Description")["Amount in LC"].sum().sort_values(ascending=False).head(10)
+              top_materials_value = df.groupby("Material Description")["Amount in LC"].sum().sort_values(ascending=False)
               top_materials_value_df = top_materials_value.reset_index()
               top_materials_value_df.columns = ['Material Description', 'Total Amount in LC']
               top_materials_value_df["Total Amount in LC"] = top_materials_value_df["Total Amount in LC"] / 1e9  # Konversi jadi Billion
@@ -88,7 +88,6 @@ elif page == "📊 Inventory Data Monitoring":
                            x="Material Description",
                            y="Total Amount in LC",
                            color="Material Description",
-                           title="Top 10 Material Based on Value (Billion IDR)",
                            color_discrete_sequence=px.colors.sequential.Plasma)
               fig.update_layout(yaxis_tickformat=".2f")  # 2 angka di belakang koma
               st.plotly_chart(fig)
